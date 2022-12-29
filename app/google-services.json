@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "706120904242",
+    "project_id": "budgeting-app-7fa87",
+    "storage_bucket": "budgeting-app-7fa87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706120904242:android:e1a3bfd203d6c2bd4e162b",
+        "android_client_info": {
+          "package_name": "com.example.personalbudgetingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706120904242-o1je2dsnsm2lk5hbuqp5o0mpfsi6e1h7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.personalbudgetingapp",
+            "certificate_hash": "932cbc0f3a90f60ba4723e3740908268a20dd1cb"
+          }
+        },
+        {
+          "client_id": "706120904242-2bseltan88p43qv5gcl7b91guhdtnfq4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDnKa7wP4DCGR-AtzrSYd1zZk9rRbh8hU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706120904242-2bseltan88p43qv5gcl7b91guhdtnfq4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
