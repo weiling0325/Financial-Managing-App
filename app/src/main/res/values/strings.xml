@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Personal Budgeting app</string>
 
+<!--    splashscreen-->
+    <string name="splashScreenTitle">PINE</string>
+
     <string-array name="items">
         <item>Select item</item>
         <item>Transport</item>
@@ -14,6 +17,49 @@
         <item>Personal</item>
         <item>Other</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+<!--recycler view for analytics-->
+    <string-array name="analytic_items">
+        <item>Transport</item>
+        <item>Food</item>
+        <item>House</item>
+        <item>Entertainment</item>
+        <item>Education</item>
+        <item>Charity</item>
+        <item>Apparel</item>
+        <item>Health</item>
+        <item>Personal</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="databaseRef">
+        <item>Trans</item>
+        <item>Food</item>
+        <item>House</item>
+        <item>Ent</item>
+        <item>Edu</item>
+        <item>Charity</item>
+        <item>Apparel</item>
+        <item>Health</item>
+        <item>Personal</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="Transport">Transport</string>
+    <string name="Food">Food</string>
+    <string name="House">House</string>
+    <string name="Entertainment">Entertainment</string>
+    <string name="Education">Education</string>
+    <string name="Charity">Charity</string>
+    <string name="Apparel">Apparel</string>
+    <string name="Health">Health</string>
+    <string name="Personal">Personal</string>
+    <string name="Other">Other</string>
+    <string name="SummarySpendingStatus">Summary Spending Status</string>
+
+    <string name="defaultStatusvalue">0.0</string>
+    <string name="status">status</string>
+    <string name="ThisMonth">This month</string>
+    <string name="ThisWeek">This week</string>
+    <string name="Today">Today</string>
 </resources>

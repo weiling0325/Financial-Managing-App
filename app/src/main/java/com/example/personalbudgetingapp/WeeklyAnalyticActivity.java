@@ -60,12 +60,12 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
     private TextView progress_ratio_transport, progress_ratio_food, progress_ratio_house,
             progress_ratio_entertainment, progress_ratio_education, progress_ratio_charity,
             progress_ratio_apparel, progress_ratio_health, progress_ratio_personal,
-            progress_ratio_other, monthRatioSpending, monthSpentAmount;
+            progress_ratio_other, weekRatioSpending, weekSpentAmount;
 
     private ImageView status_image_transport, status_image_food, status_image_house,
             status_image_entertainment, status_image_education, status_image_charity,
             status_image_apparel, status_image_health, status_image_personal,
-            status_image_other, monthRatioSpending_Image;
+            status_image_other, weekRatioSpending_Image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +85,10 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
 
         totalBudgetAmountTextView = findViewById(R.id.totalBudgetAmountTextView);
 
-        monthSpentAmount = findViewById(R.id.monthSpentAmount);
+        weekSpentAmount = findViewById(R.id.weekSpentAmount);
         linearLayoutAnalysis = findViewById(R.id.linearLayoutAnalysis);
-        monthRatioSpending = findViewById(R.id.monthRatioSpending);
-        monthRatioSpending_Image = findViewById(R.id.monthRatioSpending_Image);
+        weekRatioSpending = findViewById(R.id.weekRatioSpending);
+        weekRatioSpending_Image = findViewById(R.id.weekRatioSpending_Image);
 
         //general analytic
         analyticsTransportAmount = findViewById(R.id.analyticsTransportAmount);
@@ -141,7 +141,7 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
         //AnyChart
         pieChartView = findViewById(R.id.pieChartView);
 
-        getTotalweekItemExpenses("Transport", "Trans");
+        /*getTotalweekItemExpenses("Transport", "Trans");
         getTotalweekItemExpenses("Food", "Food");
         getTotalweekItemExpenses("House", "House");
         getTotalweekItemExpenses("Entertainment", "Ent");
@@ -150,7 +150,17 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
         getTotalweekItemExpenses("Apparel", "Apparel");
         getTotalweekItemExpenses("Health", "Health");
         getTotalweekItemExpenses("Personal", "Personal");
-        getTotalweekItemExpenses("Other", "Other");
+        getTotalweekItemExpenses("Other", "Other");*/
+        getTotalweekTransportExpenses();
+        getTotalweekFoodExpenses();
+        getTotalweekHouseExpenses();
+        getTotalweekEntertainmentExpenses();
+        getTotalweekEducationExpenses();
+        getTotalweekCharityExpenses();
+        getTotalweekApparelExpenses();
+        getTotalweekHealthExpenses();
+        getTotalweekPersonalExpenses();
+        getTotalweekOtherExpenses();
         getTotalweekSpending();
 
         new java.util.Timer().schedule(new TimerTask() {
@@ -230,7 +240,7 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
                         totalAmount += pTotal;
                     }
                     totalBudgetAmountTextView.setText("Total week's spending: $" + totalAmount);
-                    monthSpentAmount.setText("Total Spent: $" + totalAmount);
+                    weekSpentAmount.setText("Total Spent: $" + totalAmount);
                 } else {
                     pieChartView.setVisibility(View.GONE);
                 }
@@ -319,30 +329,29 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
                         othTotal = 0;
                     }
 
-                    Pie pie = AnyChart.pie();
+                    Pie weekPie = AnyChart.pie();
 
-                    List<DataEntry> data = new ArrayList<>();
-                    data.add(new ValueDataEntry("Transport", traTotal));
-                    data.add(new ValueDataEntry("House expenses", houseTotal));
-                    data.add(new ValueDataEntry("Food", foodTotal));
-                    data.add(new ValueDataEntry("Entertainment", entTotal));
-                    data.add(new ValueDataEntry("Education", eduTotal));
-                    data.add(new ValueDataEntry("Charity", chaTotal));
-                    data.add(new ValueDataEntry("Apparel", appTotal));
-                    data.add(new ValueDataEntry("Health", heaTotal));
-                    data.add(new ValueDataEntry("Personal", perTotal));
-                    data.add(new ValueDataEntry("Other", othTotal));
+                    List<DataEntry> dataWeek = new ArrayList<>();
+                    dataWeek.add(new ValueDataEntry("Transport", traTotal));
+                    dataWeek.add(new ValueDataEntry("House expenses", houseTotal));
+                    dataWeek.add(new ValueDataEntry("Food", foodTotal));
+                    dataWeek.add(new ValueDataEntry("Entertainment", entTotal));
+                    dataWeek.add(new ValueDataEntry("Education", eduTotal));
+                    dataWeek.add(new ValueDataEntry("Charity", chaTotal));
+                    dataWeek.add(new ValueDataEntry("Apparel", appTotal));
+                    dataWeek.add(new ValueDataEntry("Health", heaTotal));
+                    dataWeek.add(new ValueDataEntry("Personal", perTotal));
+                    dataWeek.add(new ValueDataEntry("Other", othTotal));
 
-                    pie.data(data);
-                    pie.title("Weekly Analytics");
-                    pie.labels().position("outside");
+                    weekPie.data(dataWeek);
+                    weekPie.title("Weekly Analytics");
+                    weekPie.labels().position("outside");
 
-                    pie.legend().title().enabled(true);
-                    pie.legend().title().text("Weekly Analysis").padding(0d, 0d, 10d, 0d);
-                    pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
+                    weekPie.legend().title().enabled(true);
+                    weekPie.legend().title().text("Weekly Analysis").padding(0d, 0d, 10d, 0d);
+                    weekPie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
 
-                    pieChartView.setChart(pie);
-
+                    pieChartView.setChart(weekPie);
                 } else {
                     Toast.makeText(WeeklyAnalyticActivity.this, "Child does not exist!", Toast.LENGTH_SHORT).show();
                 }
@@ -520,14 +529,14 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
 
                     float monthPercent = (monthTotalSpentAmount/monthTotalSpentAmountRatio)*100;
                     if (monthPercent < 50) {
-                        monthRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
-                        monthRatioSpending_Image.setImageResource(R.drawable.green);
+                        weekRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
+                        weekRatioSpending_Image.setImageResource(R.drawable.green);
                     } else if (monthPercent >= 50 && monthPercent < 100) {
-                        monthRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
-                        monthRatioSpending_Image.setImageResource(R.drawable.brown);
+                        weekRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
+                        weekRatioSpending_Image.setImageResource(R.drawable.brown);
                     } else {
-                        monthRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
-                        monthRatioSpending_Image.setImageResource(R.drawable.red);
+                        weekRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
+                        weekRatioSpending_Image.setImageResource(R.drawable.red);
                     }
 
                     float transportPercent = (traTotal/traRatio)*100;
@@ -661,7 +670,7 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
         });
     };
 
-    /*private void getTotalweekTransportExpenses() {
+    private void getTotalweekTransportExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -1028,5 +1037,5 @@ public class WeeklyAnalyticActivity extends AppCompatActivity {
 
             }
         });
-    }*/
+    }
 }

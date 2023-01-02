@@ -21,6 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.personalbudgetingapp.adapter.SavingsGoalAdapter;
+import com.example.personalbudgetingapp.model.Data;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -37,7 +39,6 @@ import org.joda.time.DateTime;
 import org.joda.time.Months;
 import org.joda.time.MutableDateTime;
 import org.joda.time.Weeks;
-import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -59,7 +60,7 @@ public class SetSavingsGoal extends AppCompatActivity {
     private String onlineUserId = "";
     private DatabaseReference savingsRef;
 
-    private SavingsGoalAdapter SavingsGoalAdapter;
+    private com.example.personalbudgetingapp.adapter.SavingsGoalAdapter SavingsGoalAdapter;
     private List<Data> myDataList;
 
     @Override

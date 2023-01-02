@@ -15,7 +15,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private static int SPLASH = 3000;
     Animation animation;
-    private ImageView imageView;
+    private ImageView logoView;
     private TextView appName;
 
     @Override
@@ -26,10 +26,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         animation = AnimationUtils.loadAnimation(this, R.anim.animation);
 
-        imageView = findViewById(R.id.imageView);
+        logoView = findViewById(R.id.logoView);
         appName = findViewById(R.id.appName);
 
-        imageView.setAnimation(animation);
+        logoView.setAnimation(animation);
         appName.setAnimation(animation);
 
         new Handler().postDelayed(new Runnable() {

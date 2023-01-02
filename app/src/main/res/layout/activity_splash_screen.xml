@@ -9,17 +9,28 @@
     tools:context=".SplashScreenActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/applogo"
+        android:src="@drawable/pine_logo"
         android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Personal Budgeting App"
+        android:text="@string/splashScreenTitle"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/teamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Argonauts"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#000"

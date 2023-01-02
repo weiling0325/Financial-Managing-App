@@ -64,12 +64,12 @@ public class DailyAnalyticActivity extends AppCompatActivity {
     private TextView progress_ratio_transport, progress_ratio_food, progress_ratio_house,
             progress_ratio_entertainment, progress_ratio_education, progress_ratio_charity,
             progress_ratio_apparel, progress_ratio_health, progress_ratio_personal,
-            progress_ratio_other, monthRatioSpending, monthSpentAmount;
+            progress_ratio_other, dailyRatioSpending, dailySpentAmount;
 
     private ImageView status_image_transport, status_image_food, status_image_house,
             status_image_entertainment, status_image_education, status_image_charity,
             status_image_apparel, status_image_health, status_image_personal,
-            status_image_other, monthRatioSpending_Image;
+            status_image_other, dailyRatioSpending_Image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +89,10 @@ public class DailyAnalyticActivity extends AppCompatActivity {
 
         totalBudgetAmountTextView = findViewById(R.id.totalBudgetAmountTextView);
 
-        monthSpentAmount = findViewById(R.id.monthSpentAmount);
+        dailySpentAmount = findViewById(R.id.dailySpentAmount);
         linearLayoutAnalysis = findViewById(R.id.linearLayoutAnalysis);
-        monthRatioSpending = findViewById(R.id.monthRatioSpending);
-        monthRatioSpending_Image = findViewById(R.id.monthRatioSpending_Image);
+        dailyRatioSpending = findViewById(R.id.dailyRatioSpending);
+        dailyRatioSpending_Image = findViewById(R.id.dailyRatioSpending_Image);
 
         //general analytic
         analyticsTransportAmount = findViewById(R.id.analyticsTransportAmount);
@@ -145,17 +145,17 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         //AnyChart
         pieChartView = findViewById(R.id.pieChartView);
 
-        /*getTotalweekTransportExpenses();
-        getTotalweekFoodExpenses();
-        getTotalweekHouseExpenses();
-        getTotalweekEntertainmentExpenses();
-        getTotalweekEducationExpenses();
-        getTotalweekCharityExpenses();
-        getTotalweekApparelExpenses();
-        getTotalweekHealthExpenses();
-        getTotalweekPersonalExpenses();
-        getTotalweekOtherExpenses();*/
-        getTotalDailyItemExpenses("Transport", "Trans");
+        getTotalDailyTransportExpenses();
+        getTotalDailyFoodExpenses();
+        getTotalDailyHouseExpenses();
+        getTotalDailyEntertainmentExpenses();
+        getTotalDailyEducationExpenses();
+        getTotalDailyCharityExpenses();
+        getTotalDailyApparelExpenses();
+        getTotalDailyHealthExpenses();
+        getTotalDailyPersonalExpenses();
+        getTotalDailyOtherExpenses();
+        /*getTotalDailyItemExpenses("Transport", "Trans");
         getTotalDailyItemExpenses("Food", "Food");
         getTotalDailyItemExpenses("House", "House");
         getTotalDailyItemExpenses("Entertainment", "Ent");
@@ -164,7 +164,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         getTotalDailyItemExpenses("Apparel", "Apparel");
         getTotalDailyItemExpenses("Health", "Health");
         getTotalDailyItemExpenses("Personal", "Personal");
-        getTotalDailyItemExpenses("Other", "Other");
+        getTotalDailyItemExpenses("Other", "Other");*/
         getTotalDaySpending();
 
         new java.util.Timer().schedule(new TimerTask() {
@@ -233,7 +233,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
                         totalAmount += pTotal;
                     }
                     totalBudgetAmountTextView.setText("Total day's spending: $" + totalAmount);
-                    monthSpentAmount.setText("Total Spent: $" + totalAmount);
+                    dailySpentAmount.setText("Total Spent: $" + totalAmount);
                 } else {
                     totalBudgetAmountTextView.setText("Good job, you haven't spend today.");
                     pieChartView.setVisibility(View.GONE);
@@ -346,25 +346,6 @@ public class DailyAnalyticActivity extends AppCompatActivity {
                     pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
 
                     pieChartView.setChart(pie);
-
-/*                    List<PieEntry> data = new ArrayList<>();
-                    data.add(new PieEntry(traTotal, "Transport"));
-                    data.add(new PieEntry(houseTotal, "House exp"));
-                    data.add(new PieEntry(foodTotal, "Food"));
-                    data.add(new PieEntry(entTotal, "Entertainment"));
-                    data.add(new PieEntry(eduTotal, "Education"));
-                    data.add(new PieEntry(chaTotal, "Charity"));
-                    data.add(new PieEntry(appTotal, "Apparel"));
-                    data.add(new PieEntry(heaTotal, "Health"));
-                    data.add(new PieEntry(perTotal, "Personal"));
-                    data.add(new PieEntry(othTotal, "Other"));
-
-                    PieDataSet pieDataSet = new PieDataSet(data, "Daily Analysis");
-                    pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-                    pieChartView.setData(new PieData(pieDataSet));
-                    pieChartView.animateXY(5000,5000);
-                    pieChartView.getDescription().setEnabled(false);*/
-
                 } else {
                     Toast.makeText(DailyAnalyticActivity.this, "Child does not exist!", Toast.LENGTH_SHORT).show();
                 }
@@ -542,14 +523,14 @@ public class DailyAnalyticActivity extends AppCompatActivity {
 
                     float monthPercent = (monthTotalSpentAmount/monthTotalSpentAmountRatio)*100;
                     if (monthPercent < 50) {
-                        monthRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
-                        monthRatioSpending_Image.setImageResource(R.drawable.green);
+                        dailyRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
+                        dailyRatioSpending_Image.setImageResource(R.drawable.green);
                     } else if (monthPercent >= 50 && monthPercent < 100) {
-                        monthRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
-                        monthRatioSpending_Image.setImageResource(R.drawable.brown);
+                        dailyRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
+                        dailyRatioSpending_Image.setImageResource(R.drawable.brown);
                     } else {
-                        monthRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
-                        monthRatioSpending_Image.setImageResource(R.drawable.red);
+                        dailyRatioSpending.setText(monthPercent + "% used of " + monthTotalSpentAmountRatio + ". Status: ");
+                        dailyRatioSpending_Image.setImageResource(R.drawable.red);
                     }
 
                     float transportPercent = (traTotal/traRatio)*100;
@@ -693,7 +674,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*private void getTotalweekTransportExpenses() {
+    private void getTotalDailyTransportExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -731,7 +712,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekFoodExpenses() {
+    private void getTotalDailyFoodExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -769,7 +750,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekHouseExpenses() {
+    private void getTotalDailyHouseExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -806,7 +787,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekEntertainmentExpenses() {
+    private void getTotalDailyEntertainmentExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -844,7 +825,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekEducationExpenses() {
+    private void getTotalDailyEducationExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -882,7 +863,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekCharityExpenses() {
+    private void getTotalDailyCharityExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -920,7 +901,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekApparelExpenses() {
+    private void getTotalDailyApparelExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -958,7 +939,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekHealthExpenses() {
+    private void getTotalDailyHealthExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -996,7 +977,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekPersonalExpenses() {
+    private void getTotalDailyPersonalExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -1034,7 +1015,7 @@ public class DailyAnalyticActivity extends AppCompatActivity {
         });
     }
 
-    private void getTotalweekOtherExpenses() {
+    private void getTotalDailyOtherExpenses() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -1070,5 +1051,5 @@ public class DailyAnalyticActivity extends AppCompatActivity {
 
             }
         });
-    }*/
+    }
 }

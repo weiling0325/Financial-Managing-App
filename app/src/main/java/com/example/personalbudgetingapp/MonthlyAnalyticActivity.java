@@ -77,7 +77,7 @@ public class MonthlyAnalyticActivity extends AppCompatActivity {
         setSupportActionBar(settingsToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Monthly Analytics");
+        getSupportActionBar().setTitle("Monthly Analytics");;
 
         mAuth = FirebaseAuth.getInstance();
         onlineUserId = mAuth.getCurrentUser().getUid();
@@ -142,7 +142,7 @@ public class MonthlyAnalyticActivity extends AppCompatActivity {
         //AnyChart
         pieChartView = findViewById(R.id.pieChartView);
 
-        /*getTotalweekTransportExpenses("Transport", "Trans");
+        getTotalweekTransportExpenses("Transport", "Trans");
         getTotalweekFoodExpenses();
         getTotalweekHouseExpenses();
         getTotalweekEntertainmentExpenses();
@@ -151,8 +151,9 @@ public class MonthlyAnalyticActivity extends AppCompatActivity {
         getTotalweekApparelExpenses();
         getTotalweekHealthExpenses();
         getTotalweekPersonalExpenses();
-        getTotalweekOtherExpenses();*/
-        getTotalmonthItemExpenses("Transport", "Trans");
+        getTotalweekOtherExpenses();
+        getTotalmonthSpending();
+        /*getTotalmonthItemExpenses("Transport", "Trans");
         getTotalmonthItemExpenses("Food", "Food");
         getTotalmonthItemExpenses("House", "House");
         getTotalmonthItemExpenses("Entertainment", "Ent");
@@ -161,8 +162,8 @@ public class MonthlyAnalyticActivity extends AppCompatActivity {
         getTotalmonthItemExpenses("Apparel", "Apparel");
         getTotalmonthItemExpenses("Health", "Health");
         getTotalmonthItemExpenses("Personal", "Personal");
-        getTotalmonthItemExpenses("Other", "Other");
-        getTotalmonthSpending();
+        getTotalmonthItemExpenses("Other", "Other");*/
+
 
         new java.util.Timer().schedule(new TimerTask() {
             @Override
@@ -353,39 +354,6 @@ public class MonthlyAnalyticActivity extends AppCompatActivity {
                     pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
 
                     pieChartView.setChart(pie);
-
-/*                    List<PieEntry> data = new ArrayList<>();
-                    data.add(new PieEntry(traTotal, "Transport"));
-                    data.add(new PieEntry(houseTotal, "House exp"));
-                    data.add(new PieEntry(foodTotal, "Food"));
-                    data.add(new PieEntry(entTotal, "Entertainment"));
-                    data.add(new PieEntry(eduTotal, "Education"));
-                    data.add(new PieEntry(chaTotal, "Charity"));
-                    data.add(new PieEntry(appTotal, "Apparel"));
-                    data.add(new PieEntry(heaTotal, "Health"));
-                    data.add(new PieEntry(perTotal, "Personal"));
-                    data.add(new PieEntry(othTotal, "Other"));
-
-                    PieDataSet pieDataSet = new PieDataSet(data, "Monthly Analysis");
-                    pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-                    pieChartView.setData(new PieData(pieDataSet));
-                    pieChartView.animateXY(5000,5000);
-                    pieChartView.getDescription().setEnabled(false);
-
-                    //Initialize array list
-                    ArrayList<Da> pieEntries = new ArrayList<>();
-
-                    //Initialize pie data set
-                    PieDataSet pieDataSet = new PieDataSet(pieEntries, "Student");
-                    //Set colors
-                    pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-                    //Set pie data
-                    pieChartView.setData(new PieData(pieDataSet));
-                    //Set animation
-                    pieChartView.animateXY(5000, 5000);
-                    //Hide description
-                    pieChartView.getDescription().setEnabled(false);*/
-
                 } else {
                     Toast.makeText(MonthlyAnalyticActivity.this, "Child does not exist!", Toast.LENGTH_SHORT).show();
                 }
@@ -704,7 +672,7 @@ public class MonthlyAnalyticActivity extends AppCompatActivity {
         });
     };
 
-    /*private void getTotalweekTransportExpenses(String spendingItem, String databaseRef) {
+    private void getTotalweekTransportExpenses(String spendingItem, String databaseRef) {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
         DateTime now = new DateTime();
@@ -1071,5 +1039,5 @@ public class MonthlyAnalyticActivity extends AppCompatActivity {
 
             }
         });
-    }*/
+    }
 }
