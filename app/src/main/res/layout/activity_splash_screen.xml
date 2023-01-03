@@ -4,37 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".SplashScreenActivity">
 
-    <ImageView
-        android:id="@+id/logoView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/pine_logo"
-        android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/appName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/splashScreenTitle"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        android:textColor="#000"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-    <TextView
-        android:id="@+id/teamName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Argonauts"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="291dp"
+            android:layout_marginTop="160dp"
+            app:srcCompat="@drawable/pine_logo" />
 
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="480dp"
+            android:text="PINE"
+            android:textColor="@color/black"
+            android:textSize="42sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/teamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="535dp"
+            android:text=" @Argonauts" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="232dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="-120dp"
+            android:layout_marginBottom="60dp"
+            android:baselineAligned="false"
+            app:srcCompat="@drawable/background1" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="231dp"
+            android:layout_height="303dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="650dp"
+            app:srcCompat="@drawable/background2" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="235dp"
+            android:layout_height="380dp"
+            android:layout_marginLeft="-150dp"
+            android:layout_marginTop="-20dp"
+            app:srcCompat="@drawable/background3" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="346dp"
+            android:layout_height="691dp"
+            android:layout_marginTop="-300dp"
+            android:layout_marginLeft="100dp"
+            app:srcCompat="@drawable/background4" />
+
+    </RelativeLayout>
 </LinearLayout>
